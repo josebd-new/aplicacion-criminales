@@ -1,0 +1,37 @@
+[
+  {
+    "nombre": "Jose",
+    "apellido": "Breña",
+    "edad": 45,
+    "dni": "02254829R",
+    "numerocrimenes": 40
+  },
+  {
+    "nombre": "Rodrigo",
+    "apellido": "Mora",
+    "edad": 44,
+    "dni": "02257839L",
+    "numerocrimenes": 25
+  },
+  {
+    "nombre": "Sergio",
+    "apellido": "Malo",
+    "edad": 43,
+    "dni": "58934785P",
+    "numerocrimenes": 36
+  },
+  {
+    "nombre": "Ruperto",
+    "apellido": "Lopez",
+    "edad": 43,
+    "dni": "85236912T",
+    "numerocrimenes": 62
+  },
+  {
+    "nombre": "Roberto",
+    "apellido": "Epi",
+    "edad": 49,
+    "dni": "54698723C",
+    "numerocrimenes": 12
+  }
+]

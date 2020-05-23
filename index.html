@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/estilos.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <title>Ejercicio</title>
+</head>
+
+<body>
+
+    <div id="info">
+
+        <form id="buscador">
+
+            <input type="text" name="buscar_nombre" id="buscar_nombre" placeholder="Buscar">
+            <input type="button" id="buscar" onclick="buscarCriminalNombre()" value="Buscar Nombre">
+            <br /><br />
+            <input type="reset" id="" value="Borrar">
+
+        </form>
+
+        <br /><br />
+
+        <form id="ordenar">
+
+            <select name="seleccion" id="seleccion">
+
+                <option value="" disabled selected>Ordenar de lista</option>
+                <option value="lascen">Lista ascendente</option>
+                <option value="ldescen">Lista descendente</option>
+                <option value="nascen">Nºcrimenes ascendente</option>
+                <option value="ndescen">Nºcrimenes descendente</option>
+
+            </select>
+
+        </form>
+
+        <h1>LOS MAS BUSCADOS DE AMERICA</h1>
+
+    </div>
+
+    <form id="formulario">
+
+        Nombre <input type="text" name="nombre" id="nombre" /><br /><br />
+        Apellido <input type="text" name="apellido" id="apellido" /><br /><br />
+        Edad <input type="number" name="edad" id="edad" min="18" max="100" /><br /><br />
+        DNI <input type="text" name="dni" id="dni" /><br /><br />
+        Nº de Crimenes <input type="number" name="numerocrimenes" id="numerocrimenes" min="0" max="100" />
+        <input type="button" id="boton_crear" onclick="crearCriminal()" value="Enviar" />
+
+    </form>
+
+    <script src="javascript/index.js" type="module"></script>
+
+</body>
+
+</html>

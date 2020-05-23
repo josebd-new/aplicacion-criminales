@@ -1,0 +1,41 @@
+#info {
+  width: 400px;
+  background-color: aquamarine;
+  color: blue;
+  padding: 20px 20px;
+}
+#info h1 {
+  font-size: 25px;
+  text-align: center;
+  padding-bottom: 15px;
+  color: rgb(21, 32, 54);
+}
+ul {
+  list-style: none;
+}
+#numero {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 20px;
+  color: rgb(56, 56, 49);
+}
+#formulario {
+  background-color: thistle;
+  width: 400px;
+  padding: 20px 20px;
+}
+#boton {
+  margin: 10px;
+  background-color: rgb(214, 200, 200);
+}
+#boton_borrar {
+  -webkit-box-shadow: 6px 7px 19px 0px rgba(0, 0, 0, 0.71);
+  -moz-box-shadow: 6px 7px 19px 0px rgba(0, 0, 0, 0.71);
+  box-shadow: 6px 7px 19px 0px rgba(0, 0, 0, 0.71);
+}
+#mensaje {
+  width: 440px;
+  background-color: rgb(221, 111, 111);
+  text-align: center;
+  padding: 20px 0px;
+}
