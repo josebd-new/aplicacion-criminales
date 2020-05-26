@@ -1,4 +1,4 @@
-import { convertir } from '../javascript/funciones.js'
+
 
 export class Criminal {
 
