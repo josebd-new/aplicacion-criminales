@@ -6,42 +6,42 @@ export const listaCriminales = (lista) => {
     new_ul.setAttribute('id', 'lista');
     let new_inner = document.querySelector('#info').appendChild(new_ul);
 
-    document.getElementById("lista").innerHTML = "";
+    document.querySelector('#lista').innerHTML = "";
 
     lista.forEach(function (criminales, index) {
 
 
-        let new_li = document.createElement("li");
+        let new_li = document.createElement('li');
         new_inner = document.querySelector('#lista').appendChild(new_li);
-        new_inner.setAttribute("id", "numero");
-        new_inner.innerHTML = "Nº" + (index += 1) + "<br>";
+        new_inner.setAttribute('id', 'numero');
+        new_inner.innerHTML = `Nº ${(index += 1)} <br>`;
 
-        new_li = document.createElement("li");
-        new_inner = document.querySelector("#lista").appendChild(new_li);
-        new_inner.innerHTML = "Nombre: " + criminales.nombre;
+        new_li = document.createElement('li');
+        new_inner = document.querySelector('#lista').appendChild(new_li);
+        new_inner.innerHTML = `Nombre: ${criminales.nombre}`;
 
-        new_li = document.createElement("li");
-        new_inner = document.querySelector("#lista").appendChild(new_li);
-        new_inner.innerHTML = "Apellido: " + criminales.apellido;
+        new_li = document.createElement('li');
+        new_inner = document.querySelector('#lista').appendChild(new_li);
+        new_inner.innerHTML = `Apellidos: ${criminales.apellido}`;
 
-        new_li = document.createElement("li");
-        new_inner = document.querySelector("#lista").appendChild(new_li);
-        new_inner.innerHTML = "Edad: " + criminales.edad;
+        new_li = document.createElement('li');
+        new_inner = document.querySelector('#lista').appendChild(new_li);
+        new_inner.innerHTML = `Edad: ${criminales.edad}`;
 
-        new_li = document.createElement("li");
-        new_inner = document.querySelector("#lista").appendChild(new_li);
-        new_inner.innerHTML = "DNI: " + criminales.dni;
+        new_li = document.createElement('li');
+        new_inner = document.querySelector('#lista').appendChild(new_li);
+        new_inner.innerHTML = `DNI: ${criminales.dni}`;
 
-        new_li = document.createElement("li");
-        new_inner = document.querySelector("#lista").appendChild(new_li);
-        new_inner.innerHTML = "NºCrimenes: " + criminales.numerocrimenes;
+        new_li = document.createElement('li');
+        new_inner = document.querySelector('#lista').appendChild(new_li);
+        new_inner.innerHTML = `Nº Crimenes: ${criminales.numerocrimenes }`;
 
-        let new_input = document.createElement("input");
-        new_input.setAttribute("type", "submit");
-        new_input.setAttribute("id", "boton_borrar");
-        new_input.setAttribute("value", "Borrar");
+        let new_input = document.createElement('input');
+        new_input.setAttribute('type', 'submit');
+        new_input.setAttribute('id', 'boton_borrar');
+        new_input.setAttribute('value', 'Borrar');
         // new_input.setAttribute("onclick", "borrarCriminal(" + index + ")");
-        new_inner = document.getElementById("lista").appendChild(new_input);
+        new_inner = document.querySelector('#lista').appendChild(new_input);
 
         let borrar = document.querySelector('#boton_borrar');
         borrar.addEventListener('click', (index) => {

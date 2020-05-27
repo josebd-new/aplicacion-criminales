@@ -3,7 +3,6 @@ import { Criminal } from '../classes/clase.criminal.js'
 import { listaCriminales, ordenar } from './funciones.js'
 import { validaciones } from './validaciones.js'
 
-
 let lista = [];
 
 $(document).ready(function () {
@@ -21,6 +20,7 @@ $(document).ready(function () {
         listaCriminales(lista);
     });
 });
+
 const seleccion = document.querySelector('#seleccion');
 seleccion.addEventListener('change', () => {
     // captura el valor de la propiedad value que esta en los options 
@@ -32,6 +32,7 @@ seleccion.addEventListener('change', () => {
     let ordenado = ordenar(valor, lista);
     listaCriminales(ordenado);
 });
+
 const crearNuevoCriminal = document.querySelector('#boton_crear');
 crearNuevoCriminal.addEventListener('click', () => {
 
@@ -49,13 +50,26 @@ crearNuevoCriminal.addEventListener('click', () => {
 
     if (valido === true) {
 
-        console.log('hola mundo');
         const criminal = Criminal.crearCriminal(nombre, apellido, edad, dni, numerocrimenes);
         lista.push(criminal);
         listaCriminales(lista);
     }
 
 });
+
+const buscar = document.querySelector('#buscar');
+buscar.addEventListener('click', () => {
+
+    let nombre = document.querySelector('#buscar_nombre').value;
+    nombre = nombre.toUpperCase();
+    // filter devuelve un array con todos los objetos que cumplen la condicion y te envia una copia 
+    // que no afecta a la lista original
+    const criminalesConNombre = lista.filter((criminales) => criminales.nombre.toUpperCase() === nombre);
+
+    listaCriminales(criminalesConNombre);
+
+});
+
 
 
 

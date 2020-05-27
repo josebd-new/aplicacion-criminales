@@ -14,9 +14,9 @@ export const validaciones = (nombre, apellido, edad, dni, numerocrimenes, crimin
     } else if (edad == "") {
         document.getElementById("edad").focus();
         alert("Campo edad vacio");
-    } else if (edad <= 0 || edad >= 100) {
+    } else if (edad < 18 || edad >= 100) {
         document.getElementById("edad").focus();
-        alert("edad invalida de 0 a 100");
+        alert("edad invalida de 18 a 100");
     } else if (!dni) { // !dni te dice que es lo contrario de, != es distinto de
         document.getElementById("dni").focus();
         alert("Campo DNI vacio");
