@@ -8,7 +8,7 @@ export const listaCriminales = (lista) => {
 
     document.getElementById("lista").innerHTML = "";
 
-    lista.forEach(function (Criminales, index) {
+    lista.forEach(function (criminales, index) {
 
 
         let new_li = document.createElement("li");
@@ -18,35 +18,60 @@ export const listaCriminales = (lista) => {
 
         new_li = document.createElement("li");
         new_inner = document.querySelector("#lista").appendChild(new_li);
-        new_inner.innerHTML = "Nombre: " + Criminales.nombre;
+        new_inner.innerHTML = "Nombre: " + criminales.nombre;
 
         new_li = document.createElement("li");
         new_inner = document.querySelector("#lista").appendChild(new_li);
-        new_inner.innerHTML = "Apellido: " + Criminales.apellido;
+        new_inner.innerHTML = "Apellido: " + criminales.apellido;
 
         new_li = document.createElement("li");
         new_inner = document.querySelector("#lista").appendChild(new_li);
-        new_inner.innerHTML = "Edad: " + Criminales.edad;
+        new_inner.innerHTML = "Edad: " + criminales.edad;
 
         new_li = document.createElement("li");
         new_inner = document.querySelector("#lista").appendChild(new_li);
-        new_inner.innerHTML = "DNI: " + Criminales.dni;
+        new_inner.innerHTML = "DNI: " + criminales.dni;
 
         new_li = document.createElement("li");
         new_inner = document.querySelector("#lista").appendChild(new_li);
-        new_inner.innerHTML = "NºCrimenes: " + Criminales.numerocrimenes;
-
+        new_inner.innerHTML = "NºCrimenes: " + criminales.numerocrimenes;
 
         let new_input = document.createElement("input");
         new_input.setAttribute("type", "submit");
         new_input.setAttribute("id", "boton_borrar");
         new_input.setAttribute("value", "Borrar");
-        new_input.setAttribute("onclick", "borrarCriminal(" + index + ")");
+        // new_input.setAttribute("onclick", "borrarCriminal(" + index + ")");
         new_inner = document.getElementById("lista").appendChild(new_input);
+
+        let borrar = document.querySelector('#boton_borrar');
+        borrar.addEventListener('click', (index) => {
+
+            console.log(index);
+
+            index -= 1;
+
+            lista.splice(index, 1);
+
+
+            listaCriminales(lista);
+
+
+        });
+
 
     });
 
+
 }
+/* const borrarCriminal = (index) => {
+
+    index -= 1;
+
+    lista.splice(index, 1);
+
+    listaCriminales(lista);
+
+}; */
 export const ordenar = (valor, lista) => {
 
     switch (valor) {

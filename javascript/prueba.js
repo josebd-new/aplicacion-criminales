@@ -195,24 +195,6 @@ const buscarCriminalNombre = function () {
     // que no afecta a la lista original
     const criminalesConNombre = listaAmerica.filter((Criminales) => Criminales.nombre.toUpperCase() === nombre);
 
-    if (criminalesConNombre.length === 0) {
-
-        new_div = document.createElement("div");
-        new_div.setAttribute("id", "mensaje");
-        new_div = document.getElementById("info").insertAdjacentElement('afterend', new_div);
-        // new_div = document.getElementById("info").appendChild(new_div);
-        new_div.innerHTML = "<h1>El nombre buscado no existe<h1>";
-
-
-    } else {
-
-        if (typeof new_div != 'undefined') {
-
-            new_div.remove();
-        }
-
-    }
-
     listaCriminales(criminalesConNombre);
 
 };

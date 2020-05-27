@@ -1,8 +1,9 @@
 
-export const validaciones = (nombre, apellido, edad, dni, numerocrimenes) => {
+
+export const validaciones = (nombre, apellido, edad, dni, numerocrimenes, criminalConMismoDni) => {
 
     // let existeDni = compararDni(dni);// se puede enviar de las dos formas al if
-    // let dniNoValido = validarDNI(dni);
+    //let dniNoValido = validarDNI(dni);
 
     if (nombre == "") {
         document.getElementById("nombre").focus();
@@ -19,38 +20,51 @@ export const validaciones = (nombre, apellido, edad, dni, numerocrimenes) => {
     } else if (!dni) { // !dni te dice que es lo contrario de, != es distinto de
         document.getElementById("dni").focus();
         alert("Campo DNI vacio");
+    } else if (validarDNI(dni)) {
+        document.getElementById("dni").focus();
+        alert('Dni erroneo, formato no válido');
+    } else if (criminalConMismoDni) {// existeDni
+        document.getElementById("dni").focus();
+        alert("Existe el DNI");
     } else if (numerocrimenes == "") {
         document.getElementById("numerocrimenes").focus();
         alert("Campo Nº crimenes vacio");
     } else {
 
-        return true;
+        document.querySelector('#nombre').focus();
+        document.querySelector('#nombre').value = "";
+        document.querySelector('#apellido').value = "";
+        document.querySelector('#edad').value = "";
+        document.querySelector('#dni').value = "";
+        document.querySelector('#numerocrimenes').value = "";
 
+        return true;
     }
 };
-/*
+const validarDNI = (dni) => {
 
- else if (dni) {// existeDni
-        document.getElementById("dni").focus();
-        alert("Existe el DNI");
+    let numero;
+    let letr;
+    let letra;
+    let expresion_regular_dni;
+
+    expresion_regular_dni = /^\d{8}[a-zA-Z]$/;
+
+    if (expresion_regular_dni.test(dni) == true) {
+        numero = dni.substr(0, dni.length - 1);
+        letr = dni.substr(dni.length - 1, 1);
+        numero = numero % 23;
+        letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
+        letra = letra.substring(numero, numero + 1);
+
+        return false;
+
+    } else {
+
+        return true;
     }
-else if (validarDNI(dni)) {
-        document.getElementById("dni").focus();
-        alert('Dni erroneo, formato no válido');
-    }
+
+};
 
 
-let Criminales = new Criminal(nombre, apellido, edad, dni, numerocrimenes);
-        listaAmerica.push(Criminales);
-        let index = listaAmerica.indexOf(Criminales);
-        index += 1;
 
-        listaCriminales(listaAmerica);
-
-        document.getElementById("nombre").focus();
-        document.getElementById("nombre").value = "";
-        document.getElementById("apellido").value = "";
-        document.getElementById("edad").value = "";
-        document.getElementById("dni").value = "";
-        document.getElementById("numerocrimenes").value = "";
-*/

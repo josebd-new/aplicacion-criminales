@@ -2,8 +2,13 @@
 
 export class Criminal {
 
-
     static leerJson(nombre, apellido, edad, dni, numerocrimenes) {
+
+        return new Criminal(nombre, apellido, edad, dni, numerocrimenes);
+
+    };
+
+    static crearCriminal(nombre, apellido, edad, dni, numerocrimenes) {
 
         return new Criminal(nombre, apellido, edad, dni, numerocrimenes);
 

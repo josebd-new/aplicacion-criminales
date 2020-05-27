@@ -3,6 +3,7 @@ import { Criminal } from '../classes/clase.criminal.js'
 import { listaCriminales, ordenar } from './funciones.js'
 import { validaciones } from './validaciones.js'
 
+
 let lista = [];
 
 $(document).ready(function () {
@@ -16,26 +17,9 @@ $(document).ready(function () {
             return Criminal.leerJson(criminal.nombre, criminal.apellido, criminal.edad, criminal.dni, criminal.numerocrimenes);
 
         });
+
         listaCriminales(lista);
-        console.log(lista);
     });
-});
-const crearNuevoCriminal = document.querySelector('#boton_crear');
-crearNuevoCriminal.addEventListener('click', () => {
-
-    const nombre = document.querySelector('#nombre').value;
-    const apellido = document.querySelector('#apellido').value;
-    const edad = document.querySelector('#edad').value;
-    let dni = document.querySelector('#dni').value;
-    dni = dni.toUpperCase();
-    const numerocrimenes = document.querySelector('#numerocrimenes').value;
-
-    const valido = validaciones(nombre, apellido, edad, dni, numerocrimenes);
-
-
-
-
-
 });
 const seleccion = document.querySelector('#seleccion');
 seleccion.addEventListener('change', () => {
@@ -48,6 +32,31 @@ seleccion.addEventListener('change', () => {
     let ordenado = ordenar(valor, lista);
     listaCriminales(ordenado);
 });
+const crearNuevoCriminal = document.querySelector('#boton_crear');
+crearNuevoCriminal.addEventListener('click', () => {
+
+    const nombre = document.querySelector('#nombre').value;
+    const apellido = document.querySelector('#apellido').value;
+    const edad = document.querySelector('#edad').value;
+    let dni = document.querySelector('#dni').value;
+    dni = dni.toUpperCase();
+    const numerocrimenes = document.querySelector('#numerocrimenes').value;
+
+    // find devuelve solo el objeto donde se cumpla la condicion si alguno de los objetos la cumple
+    const criminalConMismoDni = lista.find((criminales) => criminales.dni.toUpperCase() === dni);
+
+    const valido = validaciones(nombre, apellido, edad, dni, numerocrimenes, criminalConMismoDni);
+
+    if (valido === true) {
+
+        console.log('hola mundo');
+        const criminal = Criminal.crearCriminal(nombre, apellido, edad, dni, numerocrimenes);
+        lista.push(criminal);
+        listaCriminales(lista);
+    }
+
+});
+
 
 
 
