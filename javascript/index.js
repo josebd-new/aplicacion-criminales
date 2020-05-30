@@ -3,15 +3,33 @@ import { Criminal } from '../classes/clase.criminal.js'
 import { listaCriminales, ordenar } from './funciones.js'
 import { validaciones } from './validaciones.js'
 
+/* let lista = [];
+fetch("json/index.json")
+    .then(res => res.json())
+    .then(lista => {
+
+        lista = lista.map(criminal => {
+
+            return Criminal.leerJson(criminal.nombre, criminal.apellido, criminal.edad, criminal.dni, criminal.numerocrimenes);
+
+        });
+
+        listaCriminales(lista);
+
+        console.log(lista);
+
+    })
+    .catch(err => console.error(err)); */
+
 let lista = [];
 
 $(document).ready(function () {
 
-    $.getJSON("json/index.json", function (America) {
+    $.getJSON("json/index.json", function (america) {
 
-        let listaAmerica = America;
         // con map modificas el array por cada iteracion cambia el elemento
-        lista = listaAmerica.map((criminal) => {
+
+        lista = america.map(criminal => {
 
             return Criminal.leerJson(criminal.nombre, criminal.apellido, criminal.edad, criminal.dni, criminal.numerocrimenes);
 
@@ -20,6 +38,24 @@ $(document).ready(function () {
         listaCriminales(lista);
     });
 });
+
+//console.log(lista);
+
+/*  let listaAmerica = America;
+
+ console.log(America);
+
+ // con map modificas el array por cada iteracion cambia el elemento
+ console.log(listaAmerica);
+
+
+ lista = listaAmerica.map((criminal) => {
+
+     return Criminal.leerJson(criminal.nombre, criminal.apellido, criminal.edad, criminal.dni, criminal.numerocrimenes);
+
+ });
+
+ listaCriminales(lista); */
 
 const seleccion = document.querySelector('#seleccion');
 seleccion.addEventListener('change', () => {

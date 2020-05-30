@@ -34,44 +34,26 @@ export const listaCriminales = (lista) => {
 
         new_li = document.createElement('li');
         new_inner = document.querySelector('#lista').appendChild(new_li);
-        new_inner.innerHTML = `Nº Crimenes: ${criminales.numerocrimenes }`;
+        new_inner.innerHTML = `Nº Crimenes: ${criminales.numerocrimenes}`;
 
         let new_input = document.createElement('input');
         new_input.setAttribute('type', 'submit');
         new_input.setAttribute('id', 'boton_borrar');
         new_input.setAttribute('value', 'Borrar');
-        // new_input.setAttribute("onclick", "borrarCriminal(" + index + ")");
+        new_input.setAttribute("onclick", "borrarCriminal(" + index + ")");
         new_inner = document.querySelector('#lista').appendChild(new_input);
 
-        let borrar = document.querySelector('#boton_borrar');
-        borrar.addEventListener('click', (index) => {
-
-            console.log(index);
-
-            index -= 1;
-
-            lista.splice(index, 1);
-
-
-            listaCriminales(lista);
-
-
-        });
-
-
     });
-
-
 }
-/* const borrarCriminal = (index) => {
+const borrarCriminal = (index) => {
 
     index -= 1;
 
     lista.splice(index, 1);
 
-    listaCriminales(lista);
 
-}; */
+    listaCriminales(lista);
+}
 export const ordenar = (valor, lista) => {
 
     switch (valor) {
