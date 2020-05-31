@@ -2,10 +2,11 @@
 import { Criminal } from '../classes/clase.criminal.js'
 import { listaCriminales, ordenar } from './funciones.js'
 import { validaciones } from './validaciones.js'
+import { obtenerCriminales } from './peticiones-http.js'
 
-/* let lista = [];
-fetch("json/index.json")
-    .then(res => res.json())
+let lista = [];
+
+obtenerCriminales()
     .then(lista => {
 
         lista = lista.map(criminal => {
@@ -15,13 +16,9 @@ fetch("json/index.json")
         });
 
         listaCriminales(lista);
+    });
 
-        console.log(lista);
-
-    })
-    .catch(err => console.error(err)); */
-
-let lista = [];
+/* let lista = [];
 
 $(document).ready(function () {
 
@@ -38,25 +35,7 @@ $(document).ready(function () {
         listaCriminales(lista);
     });
 });
-
-//console.log(lista);
-
-/*  let listaAmerica = America;
-
- console.log(America);
-
- // con map modificas el array por cada iteracion cambia el elemento
- console.log(listaAmerica);
-
-
- lista = listaAmerica.map((criminal) => {
-
-     return Criminal.leerJson(criminal.nombre, criminal.apellido, criminal.edad, criminal.dni, criminal.numerocrimenes);
-
- });
-
- listaCriminales(lista); */
-
+ */
 const seleccion = document.querySelector('#seleccion');
 seleccion.addEventListener('change', () => {
     // captura el valor de la propiedad value que esta en los options 
