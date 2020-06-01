@@ -1,5 +1,29 @@
 
 
+export const crearLista = (lista) => {
+
+    const ul = document.createElement('ul');
+    ul.id = 'lista2';
+    document.querySelector('#info').appendChild(ul);
+    // document.querySelector('#lista').innerHTML = '';
+    crearElementoLi(lista);
+}
+const crearElementoLi = (lista) => {
+
+    lista.forEach(({ nombre, apellido, edad, dni, numerocrimenes }, index) => {
+
+        const li = document.createElement('li');
+        li.id = 'numero';
+        document.querySelector('#lista2').append(li);
+        li.innerHTML = `<span> Nº ${(index += 1)}</span><br>
+        <span>Nombre: ${nombre}</span><br>
+        <span>Apellido: ${apellido}</span><br>
+        <span>Edad: ${edad}</span><br>
+        <span>DNI: ${dni}</span><br>
+        <span>NºCrimenes: ${numerocrimenes}</span>`;
+    });
+}
+
 export const listaCriminales = (lista) => {
 
     let new_ul = document.createElement('ul');
@@ -81,3 +105,4 @@ export const ordenar = (valor, lista) => {
     return lista;
 
 };
+

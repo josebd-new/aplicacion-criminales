@@ -1,10 +1,10 @@
 
 import { Criminal } from '../classes/clase.criminal.js'
-import { listaCriminales, ordenar } from './funciones.js'
+import { listaCriminales, ordenar, crearLista } from './funciones.js'
 import { validaciones } from './validaciones.js'
 import { obtenerCriminales } from './peticiones-http.js'
 
-let lista = [];
+/* let lista = [];
 
 obtenerCriminales()
     .then(lista => {
@@ -16,9 +16,8 @@ obtenerCriminales()
         });
 
         listaCriminales(lista);
-    });
-
-/* let lista = [];
+    }); */
+let lista = [];
 
 $(document).ready(function () {
 
@@ -33,9 +32,10 @@ $(document).ready(function () {
         });
 
         listaCriminales(lista);
+        crearLista(lista);
     });
 });
- */
+
 const seleccion = document.querySelector('#seleccion');
 seleccion.addEventListener('change', () => {
     // captura el valor de la propiedad value que esta en los options 

@@ -24,6 +24,11 @@ ul {
   width: 400px;
   padding: 20px 20px;
 }
+#boton_crear {
+  background-color: rgb(213, 230, 200);
+  border: none;
+  width: 25%;
+}
 #boton {
   margin: 10px;
   background-color: rgb(214, 200, 200);
@@ -32,4 +37,10 @@ ul {
   -webkit-box-shadow: 6px 7px 19px 0px rgba(0, 0, 0, 0.71);
   -moz-box-shadow: 6px 7px 19px 0px rgba(0, 0, 0, 0.71);
   box-shadow: 6px 7px 19px 0px rgba(0, 0, 0, 0.71);
+}
+div #otro {
+  background-color: green;
+}
+div {
+  background-color: red;
 }

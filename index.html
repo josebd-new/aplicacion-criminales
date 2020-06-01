@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/estilos.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
 
     <title>Ejercicio</title>
 </head>
@@ -27,7 +30,7 @@
 
         <form id="ordenar">
 
-            <select name="seleccion" id="seleccion">
+            <select name="seleccion" id="seleccion" class="mb-5">
 
                 <option value="" disabled selected>Ordenar de lista</option>
                 <option value="lascen">Lista ascendente</option>
@@ -45,7 +48,7 @@
 
     <form id="formulario">
 
-        Nombre <input type="text" name="nombre" id="nombre" /><br /><br />
+        Nombre <input type="text" name="nombre" id="nombre" class="mt-4 " /><br /><br />
         Apellido <input type="text" name="apellido" id="apellido" /><br /><br />
         Edad <input type="number" name="edad" id="edad" min="18" max="100" /><br /><br />
         DNI <input type="text" name="dni" id="dni" /><br /><br />
@@ -53,6 +56,7 @@
         <input type="button" id="boton_crear" value="Enviar" />
 
     </form>
+
 
     <script src="javascript/index.js" type="module"></script>
 
