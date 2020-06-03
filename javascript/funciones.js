@@ -6,21 +6,40 @@ export const crearLista = (lista) => {
     ul.id = 'lista2';
     document.querySelector('#info').appendChild(ul);
     // document.querySelector('#lista').innerHTML = '';
-    crearElementoLi(lista);
-}
-const crearElementoLi = (lista) => {
-
     lista.forEach(({ nombre, apellido, edad, dni, numerocrimenes }, index) => {
 
-        const li = document.createElement('li');
-        li.id = 'numero';
-        document.querySelector('#lista2').append(li);
-        li.innerHTML = `<span> Nº ${(index += 1)}</span><br>
+        crearElementoLi(nombre, apellido, edad, dni, numerocrimenes, index);
+
+        botonBorrarCriminal(index, lista);
+
+    });
+}
+const crearElementoLi = (nombre, apellido, edad, dni, numerocrimenes, index) => {
+
+    const li = document.createElement('li');
+    li.id = 'numero'; // para agregar atributos al elemento no hace falta settatribute
+    document.querySelector('#lista2').appendChild(li);
+    li.innerHTML = `<span> Nº ${(index += 1)}</span><br>
         <span>Nombre: ${nombre}</span><br>
         <span>Apellido: ${apellido}</span><br>
         <span>Edad: ${edad}</span><br>
         <span>DNI: ${dni}</span><br>
         <span>NºCrimenes: ${numerocrimenes}</span>`;
+}
+const botonBorrarCriminal = (index, lista) => {
+
+    let inputBorrar = document.createElement('input');
+    inputBorrar.type = 'submit';
+    inputBorrar.id = 'boton_borrar';
+    inputBorrar.value = 'Borrar';
+    inputBorrar = document.querySelector('#lista2').appendChild(inputBorrar);
+    inputBorrar.addEventListener('click', () => {
+
+        index -= 1;
+        lista.splice(index, 1);
+
+        crearLista(lista);
+
     });
 }
 
@@ -60,16 +79,24 @@ export const listaCriminales = (lista) => {
         new_inner = document.querySelector('#lista').appendChild(new_li);
         new_inner.innerHTML = `Nº Crimenes: ${criminales.numerocrimenes}`;
 
-        let new_input = document.createElement('input');
-        new_input.setAttribute('type', 'submit');
-        new_input.setAttribute('id', 'boton_borrar');
-        new_input.setAttribute('value', 'Borrar');
-        new_input.setAttribute("onclick", "borrarCriminal(" + index + ")");
-        new_inner = document.querySelector('#lista').appendChild(new_input);
+        /*     let new_input = document.createElement('input');
+            new_input.setAttribute('type', 'submit');
+            new_input.setAttribute('id', 'boton_borrar');
+            new_input.setAttribute('value', 'Borrar');
+            new_input.setAttribute("onclick", "borrarCriminal(" + index + ")");
+            new_inner = document.querySelector('#lista').appendChild(new_input); */
+
+        let inputBorrar = document.createElement('input');
+        inputBorrar.type = 'submit';
+        inputBorrar.id = 'boton_borrar';
+        inputBorrar.value = 'Borrar';
+        inputBorrar = document.querySelector('#lista').appendChild(inputBorrar);
+        inputBorrar.addEventListener('click', () => borrarCriminal(index, lista));
 
     });
 }
-const borrarCriminal = (index) => {
+
+const borrarCriminal = (index, lista) => {
 
     index -= 1;
 
@@ -77,6 +104,7 @@ const borrarCriminal = (index) => {
 
 
     listaCriminales(lista);
+
 }
 export const ordenar = (valor, lista) => {
 
