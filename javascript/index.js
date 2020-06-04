@@ -4,20 +4,21 @@ import { listaCriminales, ordenar, crearLista } from './funciones.js'
 import { validaciones } from './validaciones.js'
 import { obtenerCriminales } from './peticiones-http.js'
 
-/* let lista = [];
+let lista = [];
 
 obtenerCriminales()
-    .then(lista => {
+    .then(listaresp => {
 
-        lista = lista.map(criminal => {
+        lista = listaresp.map(criminal => {
 
             return Criminal.leerJson(criminal.nombre, criminal.apellido, criminal.edad, criminal.dni, criminal.numerocrimenes);
-
         });
 
-        listaCriminales(lista);
-    }); */
-let lista = [];
+        document.querySelector('#verlista').innerHTML = crearLista(lista).outerHTML;
+
+    });
+
+/* let lista = [];
 
 $(document).ready(function () {
 
@@ -32,10 +33,10 @@ $(document).ready(function () {
         });
 
         listaCriminales(lista);
-        crearLista(lista);
+        
     });
 });
-
+ */
 const seleccion = document.querySelector('#seleccion');
 seleccion.addEventListener('change', () => {
     // captura el valor de la propiedad value que esta en los options 
@@ -43,31 +44,33 @@ seleccion.addEventListener('change', () => {
     // captura el texto de los options
     //var textoOptions = seleccion.options[seleccion.selectedIndex].text;
     //console.log(textoOptions);
-    let valor = seleccion.value;
-    let ordenado = ordenar(valor, lista);
-    listaCriminales(ordenado);
+    let valor = seleccion.value,
+        ordenado = ordenar(valor, lista);
+    crearLista(ordenado);
+
 });
 
 const crearNuevoCriminal = document.querySelector('#boton_crear');
 crearNuevoCriminal.addEventListener('click', () => {
 
-    const nombre = document.querySelector('#nombre').value;
-    const apellido = document.querySelector('#apellido').value;
-    const edad = document.querySelector('#edad').value;
+    const nombre = document.querySelector('#nombre').value,
+        apellido = document.querySelector('#apellido').value,
+        edad = document.querySelector('#edad').value;
     let dni = document.querySelector('#dni').value;
     dni = dni.toUpperCase();
     const numerocrimenes = document.querySelector('#numerocrimenes').value;
 
     // find devuelve solo el objeto donde se cumpla la condicion si alguno de los objetos la cumple
-    const criminalConMismoDni = lista.find((criminales) => criminales.dni.toUpperCase() === dni);
-
-    const valido = validaciones(nombre, apellido, edad, dni, numerocrimenes, criminalConMismoDni);
+    const criminalConMismoDni = lista.find((criminales) => criminales.dni.toUpperCase() === dni),
+        valido = validaciones(nombre, apellido, edad, dni, numerocrimenes, criminalConMismoDni);
 
     if (valido === true) {
 
         const criminal = Criminal.crearCriminal(nombre, apellido, edad, dni, numerocrimenes);
         lista.push(criminal);
-        listaCriminales(lista);
+        crearLista(lista);
+        console.log(lista);
+
     }
 
 });
@@ -81,7 +84,7 @@ buscar.addEventListener('click', () => {
     // que no afecta a la lista original
     const criminalesConNombre = lista.filter((criminales) => criminales.nombre.toUpperCase() === nombre);
 
-    listaCriminales(criminalesConNombre);
+    crearLista(criminalesConNombre);
 
 });
 

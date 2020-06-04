@@ -3,45 +3,51 @@
 export const crearLista = (lista) => {
 
     const ul = document.createElement('ul');
-    ul.id = 'lista2';
-    document.querySelector('#info').appendChild(ul);
-    // document.querySelector('#lista').innerHTML = '';
     lista.forEach(({ nombre, apellido, edad, dni, numerocrimenes }, index) => {
 
-        crearElementoLi(nombre, apellido, edad, dni, numerocrimenes, index);
-
-        botonBorrarCriminal(index, lista);
-
+        const liDom = crearElementoLi(nombre, apellido, edad, dni, numerocrimenes, lista, index);
+        ul.appendChild(liDom);
     });
+
+    return ul;
 }
-const crearElementoLi = (nombre, apellido, edad, dni, numerocrimenes, index) => {
+const crearElementoLi = (nombre, apellido, edad, dni, numerocrimenes, lista, index) => {
 
     const li = document.createElement('li');
-    li.id = 'numero'; // para agregar atributos al elemento no hace falta settatribute
-    document.querySelector('#lista2').appendChild(li);
     li.innerHTML = `<span> Nº ${(index += 1)}</span><br>
         <span>Nombre: ${nombre}</span><br>
         <span>Apellido: ${apellido}</span><br>
         <span>Edad: ${edad}</span><br>
         <span>DNI: ${dni}</span><br>
         <span>NºCrimenes: ${numerocrimenes}</span>`;
+
+    li.appendChild(botonBorrarCriminal(index, lista));
+    return li;
+
 }
 const botonBorrarCriminal = (index, lista) => {
 
     let inputBorrar = document.createElement('input');
-    inputBorrar.type = 'submit';
+    inputBorrar.type = 'button';
     inputBorrar.id = 'boton_borrar';
     inputBorrar.value = 'Borrar';
-    inputBorrar = document.querySelector('#lista2').appendChild(inputBorrar);
     inputBorrar.addEventListener('click', () => {
 
+        console.log(index, lista);
+
         index -= 1;
+
         lista.splice(index, 1);
 
         crearLista(lista);
 
     });
+    return inputBorrar;
 }
+
+
+
+
 
 export const listaCriminales = (lista) => {
 
