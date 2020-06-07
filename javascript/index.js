@@ -60,6 +60,18 @@ crearNuevoCriminal.addEventListener('click', () => {
     dni = dni.toUpperCase();
     const numerocrimenes = document.querySelector('#numerocrimenes').value;
 
+    const formulario = document.forms[2].elements;
+
+    for (let i = 0; i < formulario.length; i++) {
+
+        const elemento = formulario[i];
+
+        if (elemento.value.length == 0) {
+
+            elemento.focus();
+            break;
+        }
+    }
     // find devuelve solo el objeto donde se cumpla la condicion si alguno de los objetos la cumple
     const criminalConMismoDni = lista.find((criminales) => criminales.dni.toUpperCase() === dni),
         valido = validaciones(nombre, apellido, edad, dni, numerocrimenes, criminalConMismoDni);
@@ -68,11 +80,11 @@ crearNuevoCriminal.addEventListener('click', () => {
 
         const criminal = Criminal.crearCriminal(nombre, apellido, edad, dni, numerocrimenes);
         lista.push(criminal);
-        crearLista(lista);
-        console.log(lista);
+
+        document.querySelector('#formulario').reset();
+        document.querySelector('#nombre').focus();
 
     }
-
 });
 
 const buscar = document.querySelector('#buscar');

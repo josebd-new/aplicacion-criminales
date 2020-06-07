@@ -5,20 +5,13 @@ export const validaciones = (nombre, apellido, edad, dni, numerocrimenes, crimin
     // let existeDni = compararDni(dni);// se puede enviar de las dos formas al if
     //let dniNoValido = validarDNI(dni);
 
-    if (nombre == "") {
-        document.getElementById("nombre").focus();
-        alert("Campo nombre vacio");
-    } else if (apellido == "") {
-        document.getElementById("apellido").focus();
-        alert("Campo apellido vacio");
-    } else if (edad == "") {
-        document.getElementById("edad").focus();
-        alert("Campo edad vacio");
-    } else if (edad < 18 || edad >= 100) {
+    if (nombre == "") { alert("Campo nombre vacio") }
+    else if (apellido == "") { alert("Campo apellido vacio") }
+    else if (edad == "") { alert("Campo edad vacio") }
+    else if (edad < 18 || edad >= 100) {
         document.getElementById("edad").focus();
         alert("edad invalida de 18 a 100");
     } else if (!dni) { // !dni te dice que es lo contrario de, != es distinto de
-        document.getElementById("dni").focus();
         alert("Campo DNI vacio");
     } else if (validarDNI(dni)) {
         document.getElementById("dni").focus();
@@ -26,21 +19,11 @@ export const validaciones = (nombre, apellido, edad, dni, numerocrimenes, crimin
     } else if (criminalConMismoDni) {// existeDni
         document.getElementById("dni").focus();
         alert("Existe el DNI");
-    } else if (numerocrimenes == "") {
-        document.getElementById("numerocrimenes").focus();
-        alert("Campo Nº crimenes vacio");
-    } else {
-
-        document.querySelector('#nombre').focus();
-        document.querySelector('#nombre').value = "";
-        document.querySelector('#apellido').value = "";
-        document.querySelector('#edad').value = "";
-        document.querySelector('#dni').value = "";
-        document.querySelector('#numerocrimenes').value = "";
-
-        return true;
-    }
+    } else if (numerocrimenes == "") { alert("Campo Nº crimenes vacio") }
+    else { return true }
 };
+
+
 const validarDNI = (dni) => {
 
     let numero;
